@@ -42,7 +42,7 @@
   [q]
   (let [conn (esr/connect (es-endpoint))]
     (->>
-      (esd/search conn index-name "doc" :query (esq/term :title q))
+      (esd/search conn index-name "doc" :query {:multi_match {:query q, :fields [:title :abstract]}})
       :hits
       :hits
       (map :_source))))
