@@ -1,7 +1,11 @@
 (ns wiki-search.core
-  (:gen-class))
+  (:gen-class)
+  (:require [compojure.core :refer :all]
+            [compojure.route :as route]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defroutes app-routes
+  (GET "/search" [] "{}"))
+
+(def app
+  (wrap-defaults app-routes site-defaults))
