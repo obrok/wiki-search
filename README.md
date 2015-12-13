@@ -40,6 +40,11 @@ To run tests - note you'll also need your elasticsearch setup for this
 
     $ lein test
 
+To query the running server
+
+    $ curl localhost:3000/search?q=Afghanistan
+    {"q":"Afghanistan","results":[{"title":"Wikipedia: Queens of Afghanistan","url":"https:\/\/en.wikipedia.org\/wiki\/Queens_of_Afghanistan","abstract":"}}"} ...
+
 ## Options
 
 You can customize the elasticsearch endpoint by setting an environment variable
@@ -49,6 +54,7 @@ You can customize the elasticsearch endpoint by setting an environment variable
 When running the seed operation you can select a wiki dump file to fetch
 
     $ DUMP_FILE="http://dumps.wikimedia.org/enwiki/latest/enwiki-latest-abstract23.xml" lein seed
+
 
 ## License
 
