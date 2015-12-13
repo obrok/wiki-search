@@ -1,6 +1,6 @@
 # wiki-search
 
-This project exposes a simple JSON API to search for wiki articles' by abstract
+This project exposes a simple JSON API to search for wiki articles by abstract
 and title.
 
 ## Prerequisites
