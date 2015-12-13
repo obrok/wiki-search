@@ -8,7 +8,8 @@
                  [org.clojure/data.xml "0.0.8"]
                  [clojurewerkz/elastisch "2.1.0"]
                  [compojure "1.4.0"]
-                 [ring/ring-defaults "0.1.5"]]
+                 [ring/ring-defaults "0.1.5"]
+                 [org.clojure/data.json "0.2.6"]]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler wiki-search.core/app}
   :main ^:skip-aot wiki-search.core
