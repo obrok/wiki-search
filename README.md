@@ -31,7 +31,7 @@ To fill out the index
 
     $ lein seed
 
-To start the app (see (lein-ring)[https://github.com/weavejester/lein-ring] for
+To start the app (see [lein-ring](https://github.com/weavejester/lein-ring) for
 more information)
 
     $ lein ring server
