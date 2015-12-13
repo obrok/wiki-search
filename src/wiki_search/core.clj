@@ -11,7 +11,7 @@
   (GET "/search" request
     (let [q (->> request :params :q)]
       (->
-        (response (write-str {:q q, :reqults (query q)}))
+        (response (write-str {:q q, :results (query q)}))
         (header "Content-Type" "application/json")))))
 
 (def app
