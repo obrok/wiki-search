@@ -1,6 +1,7 @@
 (ns wiki-search.seed
   (:gen-class)
-  (:require [clj-http.client :as http])
+  (:require [clj-http.client :as http]
+            [wiki-search.storage :as storage])
   (:use [clojure.data.xml :only (parse)]))
 
 (def ^:private wiki-dump-path "http://dumps.wikimedia.org/enwiki/latest/enwiki-latest-abstract23.xml")
@@ -34,5 +35,6 @@
   [& args]
   (let [{status :status, stream :body} (http/get wiki-dump-path {:as :stream})]
     (assert (= status 200))
-    (doseq [x (->> stream parse parse-feed)]
-      (println x))))
+    (doseq [doc (->> stream parse parse-feed)]
+      (println (get doc "url"))
+      (storage/store doc))))
