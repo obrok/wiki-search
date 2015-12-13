@@ -3,7 +3,10 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.7.0"]]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [clj-http "2.0.0"]
+                 [org.clojure/data.xml "0.0.8"]]
   :main ^:skip-aot wiki-search.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :aliases {"seed" ["run" "-m" "wiki-search.seed"]})
