@@ -5,18 +5,18 @@
 
 (def sample-xml
   "<feed>
-    <doc>
-      <title>Wikipedia: IFK Holmsund</title>
-      <url>http://en.wikipedia.org/wiki/IFK_Holmsund</url>
-      <abstract>Idrottsföreningen Kamraterna Holmsund was...</abstract>
-    </doc>
-   </feed>")
+  <doc>
+  <title>Wikipedia: IFK Holmsund</title>
+  <url>http://en.wikipedia.org/wiki/IFK_Holmsund</url>
+  <abstract>Idrottsföreningen Kamraterna Holmsund was...</abstract>
+  </doc>
+  </feed>")
 
 (deftest test-parsing
   (testing "Parsing a feed with a single item"
     (let [input (parse-str sample-xml)]
       (is (=
            (parse-feed input)
-           [{"title" "Wikipedia: IFK Holmsund"
-             "url" "http://en.wikipedia.org/wiki/IFK_Holmsund"
-             "abstract" "Idrottsföreningen Kamraterna Holmsund was..."}])))))
+           [{:title "Wikipedia: IFK Holmsund"
+             :url "http://en.wikipedia.org/wiki/IFK_Holmsund"
+             :abstract "Idrottsföreningen Kamraterna Holmsund was..."}])))))

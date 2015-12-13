@@ -19,9 +19,9 @@
 (defn- parse-item
   "Parses a single wiki dump doc item into the internal format"
   [doc]
-  {"title" (property-text :title doc)
-   "url" (property-text :url doc)
-   "abstract" (property-text :abstract doc)})
+  {:title (property-text :title doc)
+   :url (property-text :url doc)
+   :abstract (property-text :abstract doc)})
 
 (defn parse-feed
   "Parses a wiki dump xml into the internal format"
@@ -36,5 +36,5 @@
   (let [{status :status, stream :body} (http/get wiki-dump-path {:as :stream})]
     (assert (= status 200))
     (doseq [doc (->> stream parse parse-feed)]
-      (println (get doc "url"))
+      (println (:url doc))
       (storage/store doc))))
