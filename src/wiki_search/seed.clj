@@ -4,7 +4,9 @@
             [wiki-search.storage :as storage])
   (:use [clojure.data.xml :only (parse)]))
 
-(def ^:private wiki-dump-path "http://dumps.wikimedia.org/enwiki/latest/enwiki-latest-abstract23.xml")
+(def ^:private wiki-dump-path
+  (or (System/getenv "DUMP_PATH")
+      "http://dumps.wikimedia.org/enwiki/latest/enwiki-latest-abstract23.xml"))
 
 (defn- property-text
   "Extracts the text content of xml tag"
