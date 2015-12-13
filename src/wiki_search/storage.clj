@@ -9,6 +9,8 @@
 
 (def ^:private mapping-types {"doc" {}})
 
+(def ^:private max-results 1000)
+
 (defn- es-endpoint [] "http://127.0.0.1:9200")
 
 (defn create
@@ -42,7 +44,8 @@
   [q]
   (let [conn (esr/connect (es-endpoint))]
     (->>
-      (esd/search conn index-name "doc" :query {:multi_match {:query q, :fields [:title :abstract]}})
+      (esd/search conn index-name "doc" {:query {:multi_match {:query q, :fields [:title :abstract]}}
+                                         :size max-results})
       :hits
       :hits
       (map :_source))))
